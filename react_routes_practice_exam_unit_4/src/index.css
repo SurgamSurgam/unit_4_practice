@@ -1,0 +1,4 @@
+.photosDiv {
+  display: flex;
+  flex-wrap: wrap;
+}
