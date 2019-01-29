@@ -40,7 +40,14 @@ class Users extends React.Component {
     let selectedUser;
 
     let allUsersMapped = allUsers.map(user => {
-      if (user.name.toLowerCase().indexOf(searchedName.toLowerCase()) === 0) {
+      // if (user.name.toLowerCase().indexOf(searchedName.toLowerCase()) === 0 )
+      if (
+        user.name.toLowerCase().indexOf(searchedName.toLowerCase()) === 0 ||
+        user.name
+          .toLowerCase()
+          .split(" ")[1]
+          .indexOf(searchedName.toLowerCase()) === 0
+      ) {
         selectedUser = user.id;
         return (
           <div className="wantedNameDiv" key={user.id}>
