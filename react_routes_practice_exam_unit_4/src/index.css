@@ -1,4 +1,75 @@
+body {
+  font-family: "Bad Script", cursive;
+  font-size: 18px;
+  background-color: #e4e4f6;
+  width: 1440px;
+  display: grid;
+}
+
+#root {
+  margin: 10vh 0vh;
+  width: 1200px;
+  justify-self: center;
+  border: 10px outset white;
+}
+
+h1 {
+  font-family: "Cinzel", serif;
+}
+
+nav {
+  background-color: #8a8aef;
+  font-family: "Cinzel", serif;
+  font-size: 40px;
+  display: flex;
+  justify-content: space-around;
+
+  padding: 30px;
+}
+
+a {
+  text-decoration: none;
+  padding-bottom: 3px;
+}
+
+a:hover {
+  border-bottom: 2px solid #000;
+  padding-bottom: 3px;
+  transition: 0.5s;
+}
+
+.homeDiv {
+  background-color: #dffbed;
+  padding: 15px;
+  text-align: center;
+}
+
+.allPostsDiv {
+  background-color: #fbdffb;
+  padding: 15px;
+}
+
+.mainAlbumsDiv {
+  background-color: #edfbdf;
+  padding: 15px;
+}
+
+.todosDiv {
+  background-color: #fbfbdf;
+  padding: 15px;
+}
+
+.usersMainDiv {
+  background-color: #fbeddf;
+  padding: 15px;
+}
+
+.usersPostsMainDiv {
+  background-color: #fbdfdf;
+  padding: 15px;
+}
 .photosDiv {
   display: flex;
   flex-wrap: wrap;
+  padding: 15px;
 }

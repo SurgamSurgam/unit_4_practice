@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import compact from "lodash/compact";
 
 class Users extends React.Component {
   constructor() {
@@ -34,35 +35,35 @@ class Users extends React.Component {
   };
 
   render() {
-    console.log(this.state);
-    let { allUsers, searchedName, submit } = this.state;
+    let { allUsers, searchedName } = this.state;
+
+    let selectedUser;
 
     let allUsersMapped = allUsers.map(user => {
-      if (submit) {
-        if (user.name.toLowerCase().indexOf(searchedName.toLowerCase()) === 0) {
-          return (
-            <div className="wantedNameDiv">
-              <h1>
-                <Link to={`/users/${user.id}/posts`}>{user.name}</Link>
-              </h1>
-            </div>
-          );
-        } else {
-          return null;
-        }
-      } else {
+      if (user.name.toLowerCase().indexOf(searchedName.toLowerCase()) === 0) {
+        selectedUser = user.id;
         return (
-          <div className="allUsersMappedDiv" key={user.id}>
+          <div className="wantedNameDiv" key={user.id}>
             <h1>
               <Link to={`/users/${user.id}/posts`}>{user.name}</Link>
             </h1>
           </div>
         );
+      } else {
+        return null;
       }
     });
 
+    let getWantedName = e => {
+      e.preventDefault();
+      let pickedUser = compact(allUsersMapped);
+      if (pickedUser.length === 1) {
+        this.props.history.push(`/users/${selectedUser}/posts`);
+      }
+    };
+
     return (
-      <>
+      <div className="usersMainDiv">
         <h1>USERS</h1>
         <div className="searchDiv">
           <input
@@ -70,10 +71,10 @@ class Users extends React.Component {
             value={searchedName}
             onChange={this.handleTextChange}
           />
-          <button onClick={this.getWantedName}>search</button>
+          <button onClick={getWantedName}>search</button>
         </div>
         {allUsersMapped}
-      </>
+      </div>
     );
   }
 }

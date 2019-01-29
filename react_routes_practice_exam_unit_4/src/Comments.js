@@ -3,9 +3,9 @@ import React from "react";
 export const Comments = props => {
   let { allPosts, allComments } = props;
 
-  let allcommentsMapped = allComments.map(comment => {
+  let allcommentsMapped = allComments.map((comment, i) => {
     return (
-      <li id={comment.postId}>
+      <li id={comment.postId} key={i}>
         <h1>{comment.name}</h1>
         <h3>{comment.email}</h3>
         <p>{comment.body}</p>

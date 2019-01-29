@@ -21,7 +21,7 @@ class Posts extends React.Component {
         allComments: res.data
       });
     } catch (error) {
-      console.log(error);
+      console.log("Your Error :", error);
     }
 
     try {
@@ -31,13 +31,12 @@ class Posts extends React.Component {
         allPosts: res.data
       });
     } catch (error) {
-      console.log(error);
+      console.log("Your Error :", error);
     }
   }
 
   render() {
     let { allPosts, allComments } = this.state;
-    console.log(this.state);
 
     return (
       <div className="allPostsDiv">

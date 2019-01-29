@@ -6,7 +6,7 @@ import Users from "./Users.js";
 import Posts from "./Posts.js";
 import Albums from "./Albums.js";
 import Todos from "./Todos.js";
-// import Photos from "./Photos.js";
+import UsersPost from "./UsersPost.js";
 
 class App extends Component {
   render() {
@@ -18,7 +18,7 @@ class App extends Component {
           <Route path="/albums/:id" component={Albums} />
           <Route exact path="/albums" component={Albums} />
           <Route path="/todos" component={Todos} />
-          <Route path="/users/:id/posts" component={Users} />
+          <Route path="/users/:id/posts" component={UsersPost} />
           <Route path="/users" component={Users} />
           <Route path="/" component={Home} />
         </Switch>

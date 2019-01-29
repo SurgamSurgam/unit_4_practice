@@ -34,7 +34,7 @@ class Albums extends React.Component {
     let { allAlbums, allPhotos } = this.state;
     let allAlbumsMapped = allAlbums.map(album => {
       return (
-        <div className="allAlbumsMappedDIV">
+        <div className="allAlbumsMappedDIV" key={album.id}>
           <h1>
             {album.title}
             <Link to={`/albums/${album.id}`}>Album #{album.id}</Link>
@@ -45,16 +45,16 @@ class Albums extends React.Component {
 
     if (this.props.match.params.id) {
       return (
-        <>
+        <div className="mainAlbumsDiv">
           <Photos allPhotos={allPhotos} />
-        </>
+        </div>
       );
     } else {
       return (
-        <>
+        <div className="mainAlbumsDiv">
           <h1>Albums</h1>
           {allAlbumsMapped}
-        </>
+        </div>
       );
     }
   }
