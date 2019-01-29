@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import compact from "lodash/compact";
 
 class Users extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       allUsers: [],
       searchedName: "",
@@ -18,6 +18,7 @@ class Users extends React.Component {
       this.setState({
         allUsers: res.data
       });
+      this.props.updateHereAllUsers(res.data);
     });
   }
 
@@ -35,12 +36,15 @@ class Users extends React.Component {
   };
 
   render() {
+    if (!this.props.show) {
+      return null;
+    }
     let { allUsers, searchedName } = this.state;
 
     let selectedUser;
 
     let allUsersMapped = allUsers.map(user => {
-      // if (user.name.toLowerCase().indexOf(searchedName.toLowerCase()) === 0 )
+      // new RegExp("\\b" + searchedName.toLowerCase(), "gi").test(user.name.toLowerCase()
       if (
         user.name.toLowerCase().indexOf(searchedName.toLowerCase()) === 0 ||
         user.name

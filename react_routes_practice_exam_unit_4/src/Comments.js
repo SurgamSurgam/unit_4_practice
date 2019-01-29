@@ -1,7 +1,7 @@
 import React from "react";
 
 export const Comments = props => {
-  let { allPosts, allComments } = props;
+  let { allPosts, allComments, allUsersCopy } = props;
 
   let allcommentsMapped = allComments.map((comment, i) => {
     return (
@@ -17,11 +17,15 @@ export const Comments = props => {
     let idCommentPostMatch = allcommentsMapped.filter(comment => {
       return comment.props.id === post.id;
     });
+    let idPostUserMatch = allUsersCopy.filter(user => {
+      return user.id === post.userId;
+    });
 
     return (
       <div className="allpostsMappedDiv" key={post.id}>
         <h1>
-          {post.title} by user: {post.userId}
+          {post.title} by user:{" "}
+          {idPostUserMatch ? idPostUserMatch[0].name : post.id}
         </h1>
         <p>{post.body}</p>
         <ul>{idCommentPostMatch}</ul>

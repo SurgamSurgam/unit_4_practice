@@ -3,8 +3,8 @@ import axios from "axios";
 import { Comments } from "./Comments.js";
 
 class Posts extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       allPosts: [],
       allComments: []
@@ -41,7 +41,11 @@ class Posts extends React.Component {
     return (
       <div className="allPostsDiv">
         <h1>ALL POSTS</h1>
-        <Comments allPosts={allPosts} allComments={allComments} />
+        <Comments
+          allPosts={allPosts}
+          allComments={allComments}
+          allUsersCopy={this.props.allUsersCopy}
+        />
       </div>
     );
   }
