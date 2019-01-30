@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import compact from "lodash/compact";
+import { withRouter } from "react-router";
 
 class Users extends React.Component {
   constructor(props) {
@@ -64,9 +65,8 @@ class Users extends React.Component {
         return null;
       }
     });
-
-    let getWantedName = e => {
-      e.preventDefault();
+    console.log(this.props, "yooooo");
+    let getWantedName = () => {
       let pickedUser = compact(allUsersMapped);
       if (pickedUser.length === 1) {
         this.props.history.push(`/users/${selectedUser}/posts`);
@@ -90,4 +90,4 @@ class Users extends React.Component {
   }
 }
 
-export default Users;
+export default withRouter(Users);
